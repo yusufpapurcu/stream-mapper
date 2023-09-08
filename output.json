@@ -1,0 +1,50 @@
+{
+  "host_transaction_id": {
+    "type": "string",
+    "index": 0,
+    "mapping": {
+      "func": "IntToString",
+      "funcParams": ["state.doc_id"]
+    },
+    "validation": {
+      "func": "ValidateStringZero",
+      "funcParams": ["self.host_transaction_id"]
+    }
+  },
+  "host": {
+    "type": "string",
+    "index": 1,
+    "mapping": {
+      "func": "StringToString",
+      "funcParams": ["host_enum.host"]
+    },
+    "validation": {
+      "func": "ValidateHostEnum",
+      "funcParams": ["self.host"]
+    }
+  },
+  "payout_id": {
+    "type": "string",
+    "index": 2,
+    "mapping":{
+      "func": "StringToString",
+      "funcParams": ["state.payout_id"]
+    },
+    "validation": {
+      "func": "ValidateStringEmpty",
+      "funcParams": ["self.payout_id"]
+    }
+  },
+  "processed_at": {
+    "type": "string",
+    "index": 3,
+    "mapping":{
+      "func": "StringToString",
+      "funcParams": ["state.banking_date"]
+    },
+    "validation": {
+      "func": "TimeRFC3339",
+      "funcParams": ["self.processed_at"]
+    }
+  }
+}
